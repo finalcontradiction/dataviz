@@ -58,6 +58,12 @@ $.get(
           }
         }
       },
+      title: {
+        text: "Volume de chuva acumulada na Fazenda Carnaúba (Taperoá-PB-BR) de 2015 a 2024",
+        textStyle:{
+        align: "center"
+        }
+      },
       toolbox: {
         show: true,
         feature: {
@@ -88,7 +94,7 @@ $.get(
       yAxis: [
         {
           type: 'value',
-          name: 'Total medido (mm)',
+          name: 'Volume (mm)',
           axisLabel: {
             formatter: function (a) {
               a = +a;
@@ -121,7 +127,7 @@ $.get(
       series: [
 
         {
-          name: 'Volume de chuva',
+          name: 'Volume de chuva (mm)',
           type: 'bar',
           data: chuva_taperoa_20132025.total_chuva_mm
         }

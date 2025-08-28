@@ -1,0 +1,141 @@
+<!--
+	THIS EXAMPLE WAS DOWNLOADED FROM https://echarts.apache.org/examples/en/editor.html?c=mix-zoom-on-value&code=LYTwwgFghgTgLgOgM4QPYHcAyqoBMCWAdgOYAUAlANwBQAJAsQKZynUAEbASgPLcAqAfQAKAQT4AJNgGo2AcgD0uKHCjyoSJM0XLVqAEZRgUAXoCuuJnAEAHGKmuokUADYCATAAYAjG4TP8SIgAVkiohLIANOxsAGamhADGcPhhbKQJEKYAbsYq1ox2xp5eAMyebgCs5GwA3tEcoJCwiBD4uIzYeERkVPVs9smpALy1fRxwqKjOydYAXKMci4twMPjETDDzslAAHgGRY4u7AUKoRHAF83VLN2xwIPlbKHgYB7dLzlB6jM5Xh7coDDzFamRj_RYAX3BUNuEKitwmUz0qB2f3ebEB6GBMFB8PeMUYylMMEYaPRbCMMAA1lcMWgsXccYw2HDwRwlCoAGr4RgMmp0oGM3FsEl4biEZwgeYxFyaFl49FGYj4BJ8B6k2oChkgxgRO7q-YAbVk_kIjEicgMMFkAF15WyRYxAqgSbTMdjQfbyRioFlGCIkABJJUa_nuoXMmHvKNLVm3BIuBKmT56ZwanUKxZppiEXBk24cqBG2ScqamYDM9psDLZKC2zNLfAXYAAcSgczYFUOcZuxFWeYW7wmHdkPgApG93mmYnAtl4Jw3FqtiBBZ3IvB4F-CEmEVERMF8fh6wbDFzsRHskEbwddyfdHnIExdiC6QJP0YX5jWcgI8gUcO43hlB4lQIIQhhOtChw2ouIAXgE17ore6L3hqsg5M4oLvu84EVlsfCoCozgUowBC4KgaTAMA5DYbcxxIAe3y_IO3oxC6RhwBcmyxPESQpIQaRQNUyHemwUBsCMUhQDQolLswxICQEABiRBNowpBCWwAD8bCMBkzRIAgbEwBxCB4LgYCoFR6ikFJbDyGwG4eB41RbLIMmiTG0ZQbcMGHIWABakzAIh7wiQC9LHouSyBM08wAJwACzRYsjC5vMTnQil4U3KhWxEEgbTmilHCxfACXJQ6aUDpl6I9rcOUxZFEYlWwcGXoGuaMKibAeK1MT4NMBQALKoO0WyMMA1j3LRNzoG0cAQPMJR9Q6ECMGsq5bAAHJus1NRgAAiOgAMrQORDIys4mitdOa6yPFJQTj5Nx-QCBQ8lebCGtQN4OrhaGlphFZsFW351q1eWWrA-2LJ-1aZD-f6FIBpTlBUCBmBYzDFG4mABHAL1LDafQQh5DTgNA8DIMw3DTfxpADPxvQcFCVBAA
+	⚠ Please be aware that this chart is not an official demo of Apache ECharts but is made by user-generated code.
+-->
+<!DOCTYPE html>
+<html lang="en" style="height: 100%">
+<head>
+  <meta charset="utf-8">
+</head>
+<body style="height: 100%; margin: 0">
+  <div id="container" style="height: 100%"></div>
+
+  <script type="text/javascript" src="https://echarts.apache.org/en/js/vendors/jquery@3.7.1/dist/jquery.min.js"></script>
+  <script type="text/javascript" src="https://fastly.jsdelivr.net/npm/echarts@5/dist/echarts.min.js"></script>
+  
+  <!-- Uncomment this line if you want to dataTool extension
+  <script type="text/javascript" src="https://fastly.jsdelivr.net/npm/echarts@5/dist/extension/dataTool.min.js"></script>
+  -->
+  <!-- Uncomment this line if you want to use gl extension
+  <script type="text/javascript" src="https://echarts.apache.org/en/js/vendors/echarts-gl/dist/echarts-gl.min.js"></script>
+  -->
+  <!-- Uncomment this line if you want to echarts-stat extension
+  <script type="text/javascript" src="https://echarts.apache.org/en/js/vendors/echarts-stat/dist/ecStat.min.js"></script>
+  -->
+  <!-- Uncomment this line if you want to echarts-graph-modularity extension
+  <script type="text/javascript" src="https://echarts.apache.org/en/js/vendors/echarts-graph-modularity/dist/echarts-graph-modularity.min.js"></script>
+  -->
+  <!-- Uncomment this line if you want to use map
+  <script type="text/javascript" src="https://fastly.jsdelivr.net/npm/echarts@4.9.0/map/js/world.js"></script>
+  -->
+  <!-- Uncomment these two lines if you want to use bmap extension
+  <script type="text/javascript" src="https://api.map.baidu.com/api?v=3.0&ak=YOUR_API_KEY"></script>
+  <script type="text/javascript" src="https://fastly.jsdelivr.net/npm/echarts@5/dist/extension/bmap.min.js"></script>
+  -->
+
+  <script type="text/javascript">
+    var dom = document.getElementById('container');
+    var myChart = echarts.init(dom, null, {
+      renderer: 'canvas',
+      useDirtyRect: false
+    });
+    var app = {};
+    var ROOT_PATH = 'https://finalcontradiction.github.io/dataviz/lab6/';
+    var option;
+
+    myChart.showLoading();
+$.get(
+  ROOT_PATH + 'data.json',
+  function (chuva_taperoa_20132025) {
+    myChart.hideLoading();
+    option = {
+      tooltip: {
+        trigger: 'axis',
+        axisPointer: {
+          type: 'shadow',
+          label: {
+            show: true
+          }
+        }
+      },
+      toolbox: {
+        show: true,
+        feature: {
+          mark: { show: true },
+          dataView: { show: true, readOnly: false },
+          magicType: { show: true, type: ['line', 'bar'] },
+          restore: { show: true },
+          saveAsImage: { show: true }
+        }
+      },
+      calculable: true,
+      legend: {
+        data: ['Volume de chuva'],
+        itemGap: 5
+      },
+      grid: {
+        top: '12%',
+        left: '1%',
+        right: '10%',
+        containLabel: true
+      },
+      xAxis: [
+        {
+          type: 'category',
+          data: chuva_taperoa_20132025.ano
+        }
+      ],
+      yAxis: [
+        {
+          type: 'value',
+          name: 'Total medido (mm)',
+          axisLabel: {
+            formatter: function (a) {
+              a = +a;
+              return isFinite(a) ? echarts.format.addCommas(+a) : '';
+            }
+          }
+        }
+      ],
+      dataZoom: [
+        {
+          show: true,
+          start: 94,
+          end: 100
+        },
+        {
+          type: 'inside',
+          start: 94,
+          end: 100
+        },
+        {
+          show: true,
+          yAxisIndex: 0,
+          filterMode: 'empty',
+          width: 30,
+          height: '80%',
+          showDataShadow: false,
+          left: '93%'
+        }
+      ],
+      series: [
+
+        {
+          name: 'Volume de chuva',
+          type: 'bar',
+          data: chuva_taperoa_20132025.total_chuva_mm
+        }
+      ]
+    };
+    myChart.setOption(option);
+  }
+);
+
+    if (option && typeof option === 'object') {
+      myChart.setOption(option);
+    }
+
+    window.addEventListener('resize', myChart.resize);
+  </script>
+</body>
+</html>
